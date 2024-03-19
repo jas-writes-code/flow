@@ -3,6 +3,7 @@
     "fullscreen": false;
     "fps": "high";
     "gamma": "normal";
+    "amp": "100";
   }
   "gameplay": {
     "chaos": 16;
