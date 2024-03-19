@@ -1,19 +1,20 @@
 {
   "video": {
-    "fullscreen": false;
-    "fps": "high";
-    "gamma": "normal";
-    "amp": 100;
-  }
+    "fullscreen": false,
+    "fps": "low",
+    "gamma": "normal",
+    "amp": 100
+  },
   "gameplay": {
-    "chaos": 16;
-    "multiplier": 1;
-    "gravity": 1;
-  }
+    "chaos": 16,
+    "multiplier": 1,
+    "gravity": 1
+  },
   "sound": {
-    "master": 100;
-    "music": 100;
-    "fx": 100;
-    "player": 100;
+    "master": 100,
+    "music": 100,
+    "fx": 100,
+    "player": 100
   }
 }
+
