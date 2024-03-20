@@ -22,16 +22,24 @@ size = 1
 
 def titleswoop():
     title = pygame.image.load('assets/title.png')
-    if size <= 150:
+    nsize = 150
+    if size <= nsize:
         title = pygame.transform.scale(title, (size * 4, size * 3))
         screen.blit(title, (800 - size * 2, 50))
     else:
-        title = pygame.transform.scale(title, (600, 450))
-        screen.blit(title, (500, 50))
+        title = pygame.transform.scale(title, (nsize * 4, nsize * 3))
+        screen.blit(title, (800 - nsize * 2, 50))
+
+def titleSun():
+    nsize = 833
+    if size <= nsize:
+        pygame.draw.circle(screen, '#f9ac53', (800, 300+size), size)
+    else:
+        pygame.draw.circle(screen, '#f9ac53', (800, 300+nsize), nsize)
 
 while false:
     screen.fill('#94167f')
-    pygame.draw.circle(screen, '#f9ac53', (800, 300+size), size)
+    titleSun()
     titleswoop()
     size += 1
     pygame.display.update()
