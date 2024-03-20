@@ -13,15 +13,22 @@ clock = pygame.time.Clock()
 
 _settings = json.load(open('settings.json'))
 _frames = _settings['video']['fps']
+false = True
 if _frames == "high":
     frames = 60
 else:
     frames = 30
 size = 1
 
-while True:
+def titleswoop():
+    title = pygame.image.load('assets/title.png')
+    title = pygame.transform.scale(title, (size * 4, size * 3))
+    screen.blit(title, (800 - size * 2, 50))
+
+while false:
     screen.fill('#94167f')
-    pygame.draw.circle(screen, '#f9ac53', (800, 450), size)
+    pygame.draw.circle(screen, '#f9ac53', (800, 300+size), size)
+    titleswoop()
     size += 1
     pygame.display.update()
     clock.tick(frames)
