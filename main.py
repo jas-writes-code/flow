@@ -20,7 +20,7 @@ else:
     frames = 30
 size = 1
 
-def titleswoop():
+def titleSwoop():
     title = pygame.image.load('assets/title.png')
     nsize = 150
     if size <= nsize:
@@ -40,7 +40,7 @@ def titleSun():
 while false:
     screen.fill('#94167f')
     titleSun()
-    titleswoop()
+    titleSwoop()
     size += 1
     pygame.display.update()
     clock.tick(frames)
