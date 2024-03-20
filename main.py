@@ -22,8 +22,12 @@ size = 1
 
 def titleswoop():
     title = pygame.image.load('assets/title.png')
-    title = pygame.transform.scale(title, (size * 4, size * 3))
-    screen.blit(title, (800 - size * 2, 50))
+    if size <= 150:
+        title = pygame.transform.scale(title, (size * 4, size * 3))
+        screen.blit(title, (800 - size * 2, 50))
+    else:
+        title = pygame.transform.scale(title, (600, 450))
+        screen.blit(title, (500, 50))
 
 while false:
     screen.fill('#94167f')
