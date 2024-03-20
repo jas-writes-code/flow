@@ -10,6 +10,7 @@ pygame.init()
 screen = pygame.display.set_mode((1600, 900))
 pygame.display.set_caption("FlowGame")
 clock = pygame.time.Clock()
+key = pygame.key.get_pressed()
 
 _settings = json.load(open('settings.json'))
 _frames = _settings['video']['fps']
@@ -44,3 +45,7 @@ while false:
     size += 1
     pygame.display.update()
     clock.tick(frames)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            false = False
