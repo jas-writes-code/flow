@@ -1,10 +1,7 @@
 import pygame
-import pyaudio
-import random
 import time
 import math
 import os
-import json
 
 import vars
 pygame.init()
@@ -43,7 +40,8 @@ def titleScreen():
         pygame.display.update()
         vars.clock.tick(frames)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            vars.gameState = -1
-            return()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                print("Don't panic. The game would only close if I leave this in. Game state: " + vars.gameState)
+                vars.gameState = -1
+

@@ -1,11 +1,8 @@
-import main
 import vars
-import beat_detection
 import pygame
 import time
 import math
 import os
-import json
 pygame.init()
 
 def flashEnv(strength):  # create flashes on transparent sections of the background, where available

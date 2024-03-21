@@ -3,14 +3,12 @@
 # it will also do the dev credits on game start
 
 import pygame
-import pyaudio
-import random
 import time
 import math
 import os
-import json
 
 import title
+import beats
 import vars
 pygame.init()
 
@@ -21,6 +19,8 @@ while false:
         title.titleScreen()
 
 #    if vars.gameState == 1: <-- game is active
+
+    beats.detect()  # still needs writing
 
     if vars.gameState == -1:
         false = False
