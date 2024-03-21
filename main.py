@@ -1,3 +1,7 @@
+# this main file will determine the game's state
+# and what screen to show at what time
+# it will also do the dev credits on game start
+
 import pygame
 import pyaudio
 import random
@@ -6,46 +10,18 @@ import math
 import os
 import json
 
+import title
+import vars
 pygame.init()
-screen = pygame.display.set_mode((1600, 900))
+
 pygame.display.set_caption("FlowGame")
-clock = pygame.time.Clock()
-key = pygame.key.get_pressed()
-
-_settings = json.load(open('settings.json'))
-_frames = _settings['video']['fps']
 false = True
-if _frames == "high":
-    frames = 60
-else:
-    frames = 30
-size = 1
-
-def titleSwoop():
-    title = pygame.image.load('assets/title.png')
-    nsize = 150
-    if size <= nsize:
-        title = pygame.transform.scale(title, (size * 4, size * 3))
-        screen.blit(title, (800 - size * 2, 50))
-    else:
-        title = pygame.transform.scale(title, (nsize * 4, nsize * 3))
-        screen.blit(title, (800 - nsize * 2, 50))
-
-def titleSun():
-    nsize = 833
-    if size <= nsize:
-        pygame.draw.circle(screen, '#f9ac53', (800, 300+size), size)
-    else:
-        pygame.draw.circle(screen, '#f9ac53', (800, 300+nsize), nsize)
-
 while false:
-    screen.fill('#94167f')
-    titleSun()
-    titleSwoop()
-    size += 1
-    pygame.display.update()
-    clock.tick(frames)
+    if vars.gameState == 0:
+        title.titleScreen()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            false = False
+#    if vars.gameState == 1:
+
+    if vars.gameState == -1:
+        false = False
+    
