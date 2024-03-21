@@ -15,12 +15,12 @@ pygame.init()
 pygame.display.set_caption("FlowGame")
 false = True
 while false:
+    beats.detect()  # still needs writing
+    
     if vars.gameState == 0:
         title.titleScreen()
 
 #    if vars.gameState == 1: <-- game is active
-
-    beats.detect()  # still needs writing
 
     if vars.gameState == -1:
         false = False
