@@ -1,4 +1,5 @@
 import pygame
+import json
 pygame.init()
 
 global gameState
@@ -9,3 +10,5 @@ global screen
 screen = pygame.display.set_mode((1600, 900))
 global clock
 clock = pygame.time.Clock()
+global config
+config = json.load(open('settings.json'))

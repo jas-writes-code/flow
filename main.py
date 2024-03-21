@@ -20,8 +20,7 @@ while false:
     if vars.gameState == 0:
         title.titleScreen()
 
-#    if vars.gameState == 1:
+#    if vars.gameState == 1: <-- game is active
 
     if vars.gameState == -1:
         false = False
-    

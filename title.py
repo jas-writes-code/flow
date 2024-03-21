@@ -10,8 +10,7 @@ import vars
 pygame.init()
 
 def titleScreen():
-    _settings = json.load(open('settings.json'))
-    _frames = _settings['video']['fps']
+    _frames = vars.config['video']['fps']
     false = True
     if _frames == "high":
         frames = 60
@@ -47,3 +46,4 @@ def titleScreen():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             vars.gameState = -1
+            return()
