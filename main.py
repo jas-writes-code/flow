@@ -7,8 +7,8 @@ import time
 import math
 import os
 
-import title
-import beats
+from screens import title
+from environment import beats
 import vars
 pygame.init()
 
