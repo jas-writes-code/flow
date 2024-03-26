@@ -21,3 +21,6 @@ while vars.running:
 
 #    if vars.gameState == 1: <-- game is active
 
+#    if vars.gameState == 2: <-- options
+
+#    if vars.gameState == 3: <-- credits
