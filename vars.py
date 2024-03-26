@@ -14,3 +14,5 @@ global config
 config = json.load(open('settings.json'))
 global running
 running = True
+global titleSize
+titleSize = 0
