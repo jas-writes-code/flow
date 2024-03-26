@@ -13,8 +13,7 @@ import vars
 pygame.init()
 
 pygame.display.set_caption("FlowGame")
-false = True
-while false:
+while vars.running:
     beats.detect()  # still needs writing
     
     if vars.gameState == 0:
@@ -22,5 +21,3 @@ while false:
 
 #    if vars.gameState == 1: <-- game is active
 
-    if vars.gameState == -1:
-        false = False

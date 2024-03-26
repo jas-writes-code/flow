@@ -32,7 +32,7 @@ def titleScreen():
         else:
             pygame.draw.circle(vars.screen, '#f9ac53', (800, 300+nsize), nsize)
 
-    while false:
+    while vars.running:
         vars.screen.fill('#94167f')
         titleSun()
         titleSwoop()
@@ -42,6 +42,4 @@ def titleScreen():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                print("Don't panic. The game would only close if I leave this in. Game state: " + vars.gameState)
-                vars.gameState = -1
-
+                vars.running = False

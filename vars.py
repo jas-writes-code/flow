@@ -12,3 +12,5 @@ global clock
 clock = pygame.time.Clock()
 global config
 config = json.load(open('settings.json'))
+global running
+running = True
