@@ -33,8 +33,6 @@ def titleScreen():
         nonlocal size
         nsize = 120
         delay = 60
-
-        # Initialize button variables outside of the if blocks
         btnStart_scaled = None
         btnOpt_scaled = None
         btnQuit_scaled = None
