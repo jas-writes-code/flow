@@ -78,24 +78,20 @@ def titleScreen():
     start, opt, quit, credits = menuButtons()
     if vars.titleSize < 834:
         vars.titleSize += 1
-
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP:
             loc = pygame.mouse.get_pos()
             if start.get_rect().collidepoint(loc):
                 vars.gameState = 1
-                break
             if quit.get_rect().collidepoint(loc):
-                vars.running = False
+                vars.gameState = -1
             if opt.get_rect().collidepoint(loc):
                 vars.gameState = 2
                 print(vars.gameState)
-                break
             if credits.get_rect().collidepoint(loc):
                 vars.gameState = 3
                 print(vars.gameState)
-                break
         if event.type == pygame.QUIT:
-            vars.running = False
+            vars.gameState = -1
     pygame.display.update()
     vars.clock.tick(frames)

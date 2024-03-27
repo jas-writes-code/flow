@@ -24,3 +24,7 @@ while vars.running:
 #    if vars.gameState == 2: <-- options
 
 #    if vars.gameState == 3: <-- credits
+
+    if vars.gameState == -1:
+        print("Game exited in state " + str(vars.gameState))
+        vars.running = False
