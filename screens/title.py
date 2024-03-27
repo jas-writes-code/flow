@@ -30,10 +30,6 @@ def titleSwoop():
 def menuButtons():
     nsize = 150
     delay = 90
-    btnStart_scaled = pygame.transform.scale(btnStart, (1, 1))
-    btnOpt_scaled = pygame.transform.scale(btnOpt, (1, 1))
-    btnQuit_scaled = pygame.transform.scale(btnQuit, (1, 1))
-    btnCredits_scaled = pygame.transform.scale(btnCredits, (1, 1))
 
     if delay < vars.titleSize < nsize:
         btnStart_scaled = pygame.transform.scale(btnStart, ((vars.titleSize - delay) * 8, vars.titleSize * 1.25 - delay))
@@ -61,7 +57,7 @@ def menuButtons():
         btnCredits_scaled = pygame.transform.scale(btnCredits, ((nsize - delay) * 4, nsize - delay))
         vars.screen.blit(btnCredits_scaled, (1000 - (nsize - delay) * 2, 650))
 
-    return btnStart_scaled, btnOpt_scaled, btnQuit_scaled, btnCredits_scaled
+    return nsize, delay
 
 def titleSun():
     nsize = 833
@@ -75,22 +71,31 @@ def titleScreen():
     vars.screen.fill('#94167f')
     titleSun()
     titleSwoop()
-    start, opt, quit, credits = menuButtons()
-    if vars.titleSize < 834:
-        vars.titleSize += 1
+    nsize, delay = menuButtons()
+    vars.titleSize += 1
+    if vars.gameState != 0:
+        print(vars.gameState)
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP:
             loc = pygame.mouse.get_pos()
-            if start.get_rect().collidepoint(loc):
-                vars.gameState = 1
-            if quit.get_rect().collidepoint(loc):
-                vars.gameState = -1
-            if opt.get_rect().collidepoint(loc):
-                vars.gameState = 2
-                print(vars.gameState)
-            if credits.get_rect().collidepoint(loc):
-                vars.gameState = 3
-                print(vars.gameState)
+            if delay < vars.titleSize < nsize:
+                if (800 - (vars.titleSize - delay) * 4) < loc[0] < (800 + (vars.titleSize - delay) * 4) and 500 < loc[1] < (500 + (vars.titleSize * 1.25 - delay)):
+                    vars.gameState = 1  # do this if the start button is pressed
+                if 800 - (vars.titleSize - delay) * 2 < loc[0] < 800 + (vars.titleSize - delay) and 750 < loc[1] < 750 + vars.titleSize - delay:
+                    vars.gameState = -1  # do this if the quit button is pressed
+                if 600 - (vars.titleSize - delay) * 2 < loc[0] < 600 + (vars.titleSize - delay) * 2 and 650 < loc[1] < 650 + vars.titleSize - delay:
+                    vars.gameState = 2  # do this if the options button is pressed
+                if 1000 - (vars.titleSize - delay) * 2 < loc[0] < 1000 + (vars.titleSize - delay) * 2 and 650 < loc[1] < 650 + vars.titleSize - delay:
+                    vars.gameState = 3  # do this if the credits button is pressed
+            if vars.titleSize >= nsize:  # same pattern as above
+                if (800 - (nsize - delay) * 4) < loc[0] < (800 + (nsize - delay) * 4) and 500 < loc[1] < (500 + (nsize * 1.25 - delay)):
+                    vars.gameState = 1
+                if 800 - (nsize - delay) * 2 < loc[0] < 800 + (nsize - delay) and 750 < loc[1] < 750 + nsize - delay:
+                    vars.gameState = -1
+                if 600 - (nsize - delay) * 2 < loc[0] < 600 + (nsize - delay) * 2 and 650 < loc[1] < 650 + nsize - delay:
+                    vars.gameState = 2
+                if 1000 - (nsize - delay) * 2 < loc[0] < 1000 + (nsize - delay) * 2 and 650 < loc[1] < 650 + nsize - delay:
+                    vars.gameState = 3
         if event.type == pygame.QUIT:
             vars.gameState = -1
     pygame.display.update()
