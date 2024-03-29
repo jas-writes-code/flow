@@ -16,3 +16,7 @@ global running
 running = True
 global titleSize
 titleSize = 0
+global gameScore
+gameScore = 0
+global speed
+speed = 0

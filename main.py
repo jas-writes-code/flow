@@ -7,8 +7,9 @@ import time
 import math
 import os
 
-from screens import title
+from screens import title, credits, options
 from environment import beats
+from game import flowman
 import vars
 pygame.init()
 
@@ -19,11 +20,14 @@ while vars.running:
     if vars.gameState == 0:
         title.titleScreen()
 
-#    if vars.gameState == 1: <-- game is active
+    if vars.gameState == 1:
+        flowman.start()
 
-#    if vars.gameState == 2: <-- options
+    if vars.gameState == 2:
+        options.options()
 
-#    if vars.gameState == 3: <-- credits
+    if vars.gameState == 3:
+        credits.credits()
 
     if vars.gameState == -1:
         print("Game exited in state " + str(vars.gameState))
