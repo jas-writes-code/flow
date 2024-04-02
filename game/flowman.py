@@ -3,6 +3,7 @@ import pygame
 import vars
 from game import procgen, score, physics
 from screens import viewport
+from player import player
 pygame.init()
 
 # start viewport and spawn player
@@ -18,10 +19,11 @@ else:
 
 def start():
     clearstate()
-    viewport.paint()
+    viewport.paint()  # background elements including score
     if vars.clock % 10 == 0:
-        procgen.tick()
+        procgen.tick()  # obstacles and hooks
     score.update()
+    player.spawn()
     vars.clock.tick(frames)
 
 def clearstate():
