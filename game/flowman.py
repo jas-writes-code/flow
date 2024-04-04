@@ -17,7 +17,7 @@ if _frames == "high":
 else:
     frames = 30
 
-def start():
+def notYet():
     clearstate()
     viewport.paint()  # background elements including score
     if vars.clock % 10 == 0:
@@ -29,3 +29,10 @@ def start():
 def clearstate():
     vars.gameScore = 0
     vars.speed = 0
+
+def start():
+    viewport.paint()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            vars.gameState = -1
