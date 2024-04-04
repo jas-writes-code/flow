@@ -19,6 +19,6 @@ titleSize = 0
 global gameScore
 gameScore = 0
 global speed
-speed = 5
+speed = 0
 global dynamicColour
 dynamicColour = '#ffffff'
