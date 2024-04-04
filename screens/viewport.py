@@ -27,8 +27,8 @@ def boxLoop():
     if vars.gameScore != 0:
         to_remove = []
         for element in dynBG:
-            element[1] -= BGSPEED  # Move the box to the left based on BGSPEED
-            if element[1] < -100:  # Remove if completely off-screen
+            element[1] -= BGSPEED  # shift the boxes to the left
+            if element[1] < -100:  # despawn them if they're off screen
                 to_remove.append(element)
         for element in to_remove:
             dynBG.remove(element)
@@ -36,7 +36,7 @@ def boxLoop():
             vars.screen.blit(box, (moveBox[1], moveBox[2]))
 
         # Check if it's time to spawn new boxes
-        if dynBG and dynBG[-1][1] <= 1500:  # Check if the rightmost box is almost off-screen
+        if dynBG and dynBG[-1][1] <= 1500:  # is the newest box fully visible?
             for j in range(100, 700, 100):
                 vars.screen.blit(box, (1600, j))
                 dynBG.append([box, 1600, j])
@@ -49,10 +49,16 @@ def showScore(): # shows the score at the top of the screen
 
     vars.screen.blit(scoreTitle, (775 - 415, 11))
 
-    if vars.gameScore >= 10:
-        vars.screen.blit(scoreNums[huns], (825, 11))
-        vars.screen.blit(scoreNums[tens], (825 + scoreNums[huns].get_width() + 5, 11))
-        vars.screen.blit(scoreNums[ones], (825 + scoreNums[huns].get_width() + scoreNums[tens].get_width() + 5, 11))
+    if vars.gameScore <= 1000:
+        vars.screen.blit(scoreNums[thous], (825, 11))
+        vars.screen.blit(scoreNums[huns], (825 + scoreNums[thous].get_width(), 11))
+        vars.screen.blit(scoreNums[tens], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width(), 11))
+        vars.screen.blit(scoreNums[ones], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width() + scoreNums[tens].get_width(), 11))
+    else:
+        dist = 0
+        for digit in str(vars.gameScore):
+            vars.screen.blit(scoreNums[int(digit)], ((825 + dist), 11))
+            dist += scoreNums[int(digit)].get_width()
 
 def lowerSec():
     pass # draws the lower section
