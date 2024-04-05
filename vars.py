@@ -21,4 +21,4 @@ gameScore = 0
 global speed
 speed = 0
 global dynamicColour
-dynamicColour = '#ffffff'
+dynamicColour = [255, 255, 255]

@@ -98,5 +98,4 @@ def titleScreen():
                     vars.gameState = 3
         if event.type == pygame.QUIT:
             vars.gameState = -1
-    pygame.display.update()
     vars.clock.tick(frames)

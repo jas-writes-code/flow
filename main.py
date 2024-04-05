@@ -32,3 +32,5 @@ while vars.running:
     if vars.gameState == -1:
         print("Game exited in state " + str(vars.gameState))
         vars.running = False
+
+    pygame.display.update()

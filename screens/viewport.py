@@ -60,11 +60,13 @@ def showScore(): # shows the score at the top of the screen
             vars.screen.blit(scoreNums[int(digit)], ((825 + dist), 11))
             dist += scoreNums[int(digit)].get_width()
 
-def lowerSec():
-    pass # draws the lower section
-
+def padding():
+    inverted = []
+    for element in vars.dynamicColour:
+        inverted.append(255 - element)
+    pygame.draw.line(vars.screen, inverted, (0, 700), (1600, 700), 5)
 def paint():
     vars.screen.fill(vars.dynamicColour)
     boxLoop()
+    padding()
     showScore()
-    pygame.display.update()
