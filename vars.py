@@ -22,3 +22,5 @@ global speed
 speed = 0
 global dynamicColour
 dynamicColour = [255, 255, 255]
+global obstacles
+obstacles = []
