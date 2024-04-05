@@ -20,6 +20,8 @@ global gameScore
 gameScore = 0
 global speed
 speed = 0
+global maxSpeed
+maxSpeed = 300
 global dynamicColour
 dynamicColour = [255, 255, 255]
 global obstacles
