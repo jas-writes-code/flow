@@ -9,10 +9,10 @@ def flashEnv(strength):  # create flashes on transparent sections of the backgro
     for i in range (0, 20):
         if i <= 6:
             bright = bright + (target / 6)
-            vars.dynamicColour = f'{bright}. {bright}, {bright}'
+            vars.dynamicColour = f'{bright}, {bright}, {bright}'
         if i > 10:
             bright = bright - (target / 10)
-            vars.dynamicColour = f'{bright}. {bright}, {bright}'
+            vars.dynamicColour = f'{bright}, {bright}, {bright}'
 
 def flashElements(strength):  # create flashes on transparent sections of individual elements
     elements = 14  # this does nothing
