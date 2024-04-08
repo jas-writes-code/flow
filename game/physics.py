@@ -48,18 +48,18 @@ class DoPhysics:
         if self.cur_x > 800 - self.size_x and self.vel_x > 0: # right bound
             self.vel_x = 0
 
-        if self.rect.collidelist(vars.obstacles) >= 0: # collision detection
+        if self.rect.collidelist(vars.obstacles) >= 0: # object collision detection
             item = self.rect.collidelist(vars.obstacles)
             obs = vars.obstacles[item]
-            if obs.cur_y - obs.size_y <= self.cur_y: # invert vertical based on location
+            if obs.cur_y <= self.cur_y - self.size_y: # invert vertical based on location
                 self.vel_y = abs(self.vel_y) * self.bounce
-            if obs.cur_y + obs.size_y >= self.cur_y:
+                self.cur_y += 5
+            if obs.cur_y >= self.cur_y + self.size_y:
                 self.vel_y = -abs(self.vel_y) * self.bounce
-            if obs.cur_x - obs.size_x <= self.cur_x: # invert horizontal based on location
-                self.vel_x = abs(self.vel_x) * self.sticky
-            if obs.cur_x + obs.size_x >= self.cur_x:
-                self.vel_x = -abs(self.vel_x) * self.sticky
-
+            if obs.cur_x <= self.cur_x - self.size_x and not (obs.cur_y >= self.cur_y + self.size_y): # invert horizontal based on location
+                self.vel_x = abs(self.vel_x) * self.sticky - obs.vel_x
+            if obs.cur_x >= self.cur_x + self.size_x and not (obs.cur_y >= self.cur_y + self.size_y):
+                self.vel_x = -abs(self.vel_x) * self.sticky + obs.vel_x
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacles) >= 0: # friction
             if self.cur_y >= 650:
