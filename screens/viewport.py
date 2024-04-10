@@ -5,10 +5,12 @@ pygame.init()
 dynBG = []  # moves the semi-transparent boxes that overlay the reactive background
 bgBox = pygame.image.load('assets/background.png')
 scoreTitle = pygame.image.load('assets/score.png')
+banner = pygame.image.load('assets/banner.png')
 scoreNums = []
 for i in range(0, 10):
     scoreNums.append(pygame.image.load(f'assets/numbers/{i}.png'))
 box = pygame.transform.scale(bgBox, (100, 100))
+banner = pygame.transform.scale(banner, (1600, 200))
 BGSPEED = vars.speed * 0.8
 
 # rect(surface, color, rect, width=0, border_radius=0, border_top_left_radius=-1, border_top_right_radius=-1, border_bottom_left_radius=-1, border_bottom_right_radius=-1)
@@ -65,6 +67,8 @@ def padding():
     for element in vars.dynamicColour:
         inverted.append(255 - element)
     pygame.draw.line(vars.screen, inverted, (0, 700), (1600, 700), 5)
+    vars.screen.blit(banner, (0, 700))
+
 def paint():
     vars.screen.fill(vars.dynamicColour)
     boxLoop()

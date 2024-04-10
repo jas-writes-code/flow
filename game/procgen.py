@@ -20,7 +20,7 @@ def obstacles150y():
             if element.cur_x > 1550:
                 return
             else:
-				spawnvalue.append(i)
+                spawnvalue.append(i)
             return spawnvalue
 
 
