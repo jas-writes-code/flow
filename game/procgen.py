@@ -46,4 +46,4 @@ def tick():
                 spawnY = random.randint(0, len(spawnable))
                 if avaiblehook() == 0:
                     if lasernhook() == 0:
-pass
+                        pass
