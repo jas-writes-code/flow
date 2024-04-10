@@ -7,7 +7,7 @@ universalGravity = 0.45
 maxBounce = 0.6
 
 class DoPhysics:
-    def __init__(self, image, size_x, size_y, cur_x, cur_y, bounce, sticky, vel_x, vel_y, id):
+    def __init__(self, image, size_x, size_y, cur_x, cur_y, bounce, sticky, id):
         self.image = image
         self.size_x = size_x
         self.size_y = size_y
@@ -15,8 +15,8 @@ class DoPhysics:
         self.cur_y = cur_y
         self.bounce = bounce
         self.sticky = sticky
-        self.vel_x = vel_x
-        self.vel_y = vel_y
+        self.vel_x = 0
+        self.vel_y = 0
         self.id = id
         self.rect = pygame.rect
 
