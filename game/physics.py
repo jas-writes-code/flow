@@ -1,5 +1,6 @@
 import pygame
 import vars
+from game import score
 pygame.init()
 
 screen = vars.screen
@@ -49,6 +50,7 @@ class DoPhysics:
             self.vel_x = 0
 
         if self.rect.collidelist(vars.obstacles) >= 0: # object collision detection
+            score.dock(self.vel_x)
             item = self.rect.collidelist(vars.obstacles)
             obs = vars.obstacles[item]
             if obs.cur_y <= self.cur_y - self.size_y: # invert vertical based on location

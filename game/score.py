@@ -8,6 +8,8 @@ multiplier = vars.config["gameplay"]["multiplier"]
 
 def update():
     vars.gameScore = math.ceil(vars.gameScore + (1 - 1 / chaos) + (2 - 1 / vars.speed) + (2 * multiplier) + 1)
+    if vars.gameScore < 0:
+        vars.gameScore += abs(vars.gameScore) + 1
 
 def bonus(amt):
     vars.gameScore = vars.gameScore + multiplier * amt

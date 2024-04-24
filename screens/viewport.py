@@ -1,5 +1,7 @@
 import pygame
 import vars
+from game import score
+import math
 pygame.init()
 
 dynBG = []  # moves the semi-transparent boxes that overlay the reactive background
@@ -40,15 +42,17 @@ def boxLoop():
 
         # Check if it's time to spawn new boxes
         if dynBG and dynBG[-1][1] <= 1500:  # is the newest box fully visible?
+            score.update()
             for j in range(100, 700, 100):
                 vars.screen.blit(box, (1600, j))
                 dynBG.append([box, 1600, j])
 
 def showScore(): # shows the score at the top of the screen
-    ones = int(vars.gameScore % 10)
-    tens = int((vars.gameScore % 100 - ones) / 10)
-    huns = int((vars.gameScore % 1000 - tens) / 100)
-    thous = int((vars.gameScore % 10000 - huns) / 1000)
+    scoreDisplay = int(vars.gameScore)
+    ones = int(scoreDisplay % 10)
+    tens = int((scoreDisplay % 100 - ones) / 10)
+    huns = int((scoreDisplay % 1000 - tens) / 100)
+    thous = int((scoreDisplay % 10000 - huns) / 1000)
 
     vars.screen.blit(scoreTitle, (775 - 415, 11))
 
@@ -59,7 +63,7 @@ def showScore(): # shows the score at the top of the screen
         vars.screen.blit(scoreNums[ones], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width() + scoreNums[tens].get_width(), 11))
     else:
         dist = 0
-        for digit in str(vars.gameScore):
+        for digit in str(scoreDisplay):
             vars.screen.blit(scoreNums[int(digit)], ((825 + dist), 11))
             dist += scoreNums[int(digit)].get_width()
 
