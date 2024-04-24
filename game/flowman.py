@@ -32,16 +32,7 @@ def clearstate():
 
 def start():
     viewport.paint()
-    keys_pressed = pygame.key.get_pressed()
-
-    if keys_pressed[pygame.K_a]:
-        if viewport.BGSPEED > -10:
-            viewport.BGSPEED -= 1
-    if keys_pressed[pygame.K_d]:
-        if viewport.BGSPEED < 99: # for some reason this breaks if it goes above 100
-            viewport.BGSPEED += 1
-    if keys_pressed[pygame.K_SPACE]:
-        viewport.BGSPEED = 0
+    player.spawn()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

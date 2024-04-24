@@ -11,7 +11,7 @@ for i in range(0, 10):
     scoreNums.append(pygame.image.load(f'assets/numbers/{i}.png'))
 box = pygame.transform.scale(bgBox, (100, 100))
 banner = pygame.transform.scale(banner, (1600, 200))
-BGSPEED = vars.speed * 0.8
+BGSPEED = 0
 
 # rect(surface, color, rect, width=0, border_radius=0, border_top_left_radius=-1, border_top_right_radius=-1, border_bottom_left_radius=-1, border_bottom_right_radius=-1)
 # boxes are 100x100, top 1 and bottom 2 rows are excluded
@@ -26,6 +26,7 @@ def boxLoop():
                 vars.screen.blit(box, (i, j))
                 dynBG.append([box, i, j])
         vars.gameScore += 1  # comment this out if you don't want the boxes to move
+        vars.speed += 1
     if vars.gameScore != 0:
         to_remove = []
         for element in dynBG:
