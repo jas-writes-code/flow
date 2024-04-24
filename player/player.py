@@ -21,7 +21,6 @@ def spawn():
         physics.DoPhysics.move(player, vars.speed)
     if key[pygame.K_w] or key[pygame.K_SPACE] or key[pygame.K_UP]:
         physics.DoPhysics.doJump(player)
-        score.bonus(player.vel_x - vars.speed)
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 725:
         if abs(viewport.BGSPEED) <= 99:
             viewport.BGSPEED += 0.1
