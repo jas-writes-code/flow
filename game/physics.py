@@ -80,5 +80,8 @@ class DoPhysics:
             self.vel_x += dir
 
     def updateVel(self):
+        if -0.1 < self.vel_x < 0.1:
+            self.vel_x = 0
+
         self.cur_x += self.vel_x
         self.cur_y += self.vel_y

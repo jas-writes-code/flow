@@ -2,7 +2,7 @@
 # basically the entire way the player interacts with the environment
 # lots to do here
 import pygame
-from game import physics, score
+from game import physics, score, procgen
 import vars
 from screens import viewport
 from player import movements
@@ -56,7 +56,11 @@ def spawn():
         player.vel_x, player.vel_y = movements.pull(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5:
         if abs(viewport.BGSPEED) <= 99:
-            viewport.BGSPEED += 0.2
+            viewport.BGSPEED += vars.speed * 0.5
+        for element in procgen.hooks:
+            element.cur_x -= vars.speed * 0.75
+        for element in vars.obstacles:
+            element.cur_x -= vars.speed * 0.75
     else:
         viewport.BGSPEED *= 0.95
 

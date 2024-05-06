@@ -33,7 +33,7 @@ def clearstate():
 def start():
     viewport.paint()
     player.spawn()
-
+    procgen.tick()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             vars.gameState = -1
