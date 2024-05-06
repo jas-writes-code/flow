@@ -54,9 +54,9 @@ def spawn():
     if key[pygame.K_e]:
         player = setState(2, player)
         player.vel_x, player.vel_y = movements.pull(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
-    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 725:
+    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5:
         if abs(viewport.BGSPEED) <= 99:
-            viewport.BGSPEED += 0.5
+            viewport.BGSPEED += 0.2
     else:
         viewport.BGSPEED *= 0.95
 
@@ -69,7 +69,7 @@ def spawn():
                     keys -= 1
                 else:
                     player = setState(0, player)
-                    keys -= 1
+                    keys = 0
         if event.type == pygame.QUIT:
             vars.gameState = -1
 
