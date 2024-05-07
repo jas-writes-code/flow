@@ -34,7 +34,7 @@ def findHook():
         if element.cur_x - player.cur_x <= 50:
             pass
         else:
-            return element.get_x
+            return element.cur_x
 
 def spawn():
     global player, keys
@@ -55,16 +55,22 @@ def spawn():
         player = setState(2, player)
         player.vel_x, player.vel_y = movements.pull(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5:
-        if abs(viewport.BGSPEED) <= 99:
-            viewport.BGSPEED += vars.speed * 0.5
+        speed = vars.speed * 0.75
         for element in procgen.hooks:
-            element.cur_x -= vars.speed * 0.75
+            element.cur_x -= speed
         for element in vars.obstacles:
-            element.cur_x -= vars.speed * 0.75
+            element.cur_x -= speed
+            index = vars.obstacles.index(element)
+            if vars.obstacleRects:
+                hitbox = vars.obstacleRects[index]
+                hitbox.x = element.cur_x - element.size_x
+                hitbox.y = element.cur_y - element.size_y
     else:
         viewport.BGSPEED *= 0.95
 
     for event in pygame.event.get(): # reset back to idle state when you release a key
+        if keys < 0:
+            keys = 0
         if event.type == pygame.KEYDOWN:
             keys += 1
         if event.type == pygame.KEYUP:

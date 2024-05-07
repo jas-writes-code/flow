@@ -24,5 +24,7 @@ global dynamicColour
 dynamicColour = [255, 255, 255]
 global obstacles
 obstacles = []
+global obstacleRects
+obstacleRects = []
 global trackableHooks
 trackableHooks = []
