@@ -31,7 +31,7 @@ class DoPhysics:
         self.size_y = self.image.get_height() / 2
         self.rect.x = self.cur_x - self.size_x
         self.rect.y = self.cur_y - self.size_y
-#        pygame.draw.rect(vars.screen, '#000000', self.rect, 1, 0)
+        pygame.draw.rect(vars.screen, '#000000', self.rect, 1, 0)
         vars.screen.blit(self.image, (self.cur_x - self.size_x, self.cur_y - self.size_y))
 
     def setRect(self):
@@ -52,8 +52,10 @@ class DoPhysics:
             self.vel_x = 0
         if self.cur_x > 800 - self.size_x and self.vel_x > 0: # right bound
             self.vel_x = 0
-        if self.cur_y + self.size_y > 700:
+        if self.cur_y + self.size_y > 700: # catch-all arguments
             self.cur_y = 700 - self.size_y
+        if self.cur_y - self.size_y < 100:
+            self.cur_y = 100 + self.size_y
 
         if self.rect.collidelist(vars.obstacleRects) >= 0: # object collision detection
             score.dock(self.vel_x)
@@ -71,7 +73,7 @@ class DoPhysics:
                 self.cur_x = obrects.cur_x - obrects.size_x - self.size_x
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacleRects): # friction
-            if self.cur_y >= 650:
+            if self.cur_y >= 695 - self.size_y:
                 self.vel_x *= self.sticky
             else:
                 self.vel_x *= 0.98 # air friction

@@ -35,7 +35,7 @@ def findHook():
         if element.cur_x - player.cur_x <= 50:
             pass
         else:
-            return element.cur_x
+            return vars.trackableHooks.index(element)
 
 
 def spawn():
@@ -53,10 +53,16 @@ def spawn():
         player = setState(1, player)
     if key[pygame.K_q]:
         player = setState(2, player)
-        player.vel_x, player.vel_y = movements.swing(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
+        try:
+            player.vel_x, player.vel_y = movements.swing(swinging, findHook())
+        except TypeError:
+            pass
     if key[pygame.K_e]:
         player = setState(2, player)
-        player.vel_x, player.vel_y = movements.pull(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
+        try:
+            player.vel_x, player.vel_y = movements.pull(swinging, findHook())
+        except TypeError:
+            pass
 
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
         # infinite scroll effect

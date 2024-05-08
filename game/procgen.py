@@ -1,22 +1,22 @@
 import copy
-import threading
-
 import pygame
 import random
 from game import physics
 import vars
 pygame.init()
 
-hookid = 0 # obstacle id is deprecated now; id is used to identify obstacle type now
+hookid = 0 # incremental id is deprecated now; the id is used to identify obstacle type instead
 hooks = []
 chaos = vars.config["gameplay"]["chaos"] # determines chance of obstacles spawning -- default: 16
+square1 = physics.DoPhysics('obstacles/chessboard', 150, 150, 0, 0, 0, 0, 3)
 tall = physics.DoPhysics('obstacles/tall', 157, 300, 0, 0, 0, 0, 2)
 laser = physics.DoPhysics('obstacles/laser', 600, 60, 0, 0, 0, 0, 1)
 hook = physics.DoPhysics('obstacles/hook', 72, 100, 0, 0, 0, 0, hookid)
+square1.load('obstacles/chessboard')
 tall.load('obstacles/tall')
 laser.load('obstacles/laser')
 hook.load('obstacles/hook')
-available = (tall, tall)
+available = (tall, square1)
 
 def obstacles50y():
     count = 0
@@ -57,7 +57,7 @@ def spawn(object):
         vars.obstacleRects.append(laserRect)
         vars.obstacles.append(newLaser)
     elif object == 3: # this should only trigger at the start
-        object = random.randint(0, len(available))
+        object = random.randint(0, len(available) - 1)
         newObs = copy.copy(available[object - 1])
         newObs.cur_y = 100 * random.randint(1, 7)
         newObs.cur_x = 1700
@@ -67,8 +67,8 @@ def spawn(object):
         vars.obstacleRects.append(obsRect)
         vars.obstacles.append(newObs)
     else:
-        object = random.randint(0, len(available))
-        newObs = copy.copy(available[0])
+        object = random.randint(0, len(available) - 1)
+        newObs = copy.copy(available[object - 1])
         spawnable = obstacles150y()
         newObs.cur_y = spawnable[random.randint(0, len(obstacles150y()) - 1)]
         newObs.cur_x = 1700
@@ -98,7 +98,7 @@ def tick():
         if element.cur_x <= -250:
             vars.obstacles.remove(element)
         element.spawn()
-#        pygame.draw.rect(vars.screen, '#00ff00', element, 10, 0) # hitbox on elements, doesn't affect collision
+        pygame.draw.rect(vars.screen, '#00ff00', element, 10, 0) # hitbox on elements, doesn't affect collision
 
     if hooks == [] or hooks[-1].cur_x < 1000: # if a hook can be spawned, spawn it
         if randomnumber / 3 * 2 < chaos:
