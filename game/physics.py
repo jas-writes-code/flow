@@ -67,7 +67,7 @@ class DoPhysics:
             if obrects.cur_x <= self.cur_x - self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:# invert horizontal based on location
                 self.vel_x = abs(self.vel_x) * self.sticky
             if obrects.cur_x >= self.cur_x + self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:
-                self.vel_x -= (-abs(self.vel_x) * self.sticky) + vars.speed
+                self.vel_x += (-abs(self.vel_x) * self.sticky) - vars.speed
                 self.cur_x = obrects.cur_x - obrects.size_x - self.size_x
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacleRects): # friction

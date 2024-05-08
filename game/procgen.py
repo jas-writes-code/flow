@@ -7,13 +7,11 @@ from game import physics
 import vars
 pygame.init()
 
-
-idlist = 0
-hookid = 0
+hookid = 0 # obstacle id is deprecated now; id is used to identify obstacle type now
 hooks = []
 chaos = vars.config["gameplay"]["chaos"] # determines chance of obstacles spawning -- default: 16
-tall = physics.DoPhysics('obstacles/tall', 157, 300, 0, 0, 0, 0, idlist)
-laser = physics.DoPhysics('obstacles/laser', 600, 60, 0, 0, 0, 0, idlist)
+tall = physics.DoPhysics('obstacles/tall', 157, 300, 0, 0, 0, 0, 2)
+laser = physics.DoPhysics('obstacles/laser', 600, 60, 0, 0, 0, 0, 1)
 hook = physics.DoPhysics('obstacles/hook', 72, 100, 0, 0, 0, 0, hookid)
 tall.load('obstacles/tall')
 laser.load('obstacles/laser')
@@ -50,9 +48,7 @@ def lasernhook():
 def spawn(object):
     global idlist
     if object == 1:
-        idlist += 1
         newLaser = copy.copy(laser)
-        newLaser.id = idlist
         laserRect = newLaser.setRect()
         newLaser.cur_y = 650
         newLaser.cur_x = 1850
@@ -61,10 +57,8 @@ def spawn(object):
         vars.obstacleRects.append(laserRect)
         vars.obstacles.append(newLaser)
     elif object == 3: # this should only trigger at the start
-        idlist += 1
         object = random.randint(0, len(available))
         newObs = copy.copy(available[object - 1])
-        newObs.id = idlist
         newObs.cur_y = 100 * random.randint(1, 7)
         newObs.cur_x = 1700
         obsRect = newObs.setRect()
@@ -73,10 +67,8 @@ def spawn(object):
         vars.obstacleRects.append(obsRect)
         vars.obstacles.append(newObs)
     else:
-        idlist += 1
         object = random.randint(0, len(available))
         newObs = copy.copy(available[0])
-        newObs.id = idlist
         spawnable = obstacles150y()
         newObs.cur_y = spawnable[random.randint(0, len(obstacles150y()) - 1)]
         newObs.cur_x = 1700
@@ -126,7 +118,11 @@ def tick():
         if check1 == 0:
             if check2 is not None:
                 if check3 != 0:
-                    if lasernhook() == 1: # only spawn lasers if there is a hook nearby
-                        spawn(1)
-                        return
+                    try:
+                        if vars.obstacles[-2].id != 1:
+                            if lasernhook() == 1: # only spawn lasers if there is a hook nearby
+                                spawn(1)
+                                return
+                    except IndexError:
+                        pass
                     spawn(0)

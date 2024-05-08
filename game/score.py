@@ -13,9 +13,8 @@ def update():
     if vars.gameScore < 0:
         vars.gameScore += abs(vars.gameScore) + 1
     if 10 > vars.gameScore / accel > 1:
-        vars.speed *= 1.1
+        vars.speed *= 1.3
         accel *= 10
-    print(vars.speed)
 
 def bonus(amt):
     vars.gameScore = vars.gameScore + multiplier * amt

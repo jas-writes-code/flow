@@ -40,12 +40,13 @@ def findHook():
 
 def spawn():
     global player, keys
+    playerspeed = vars.speed * 0.9
     key = pygame.key.get_pressed() # controls
     if key[pygame.K_a] or key[pygame.K_LEFT]:
-        physics.DoPhysics.move(player, - 1)
+        physics.DoPhysics.move(player, - playerspeed)
         player = setState(1, player)
     if key[pygame.K_d] or key[pygame.K_RIGHT]:
-        physics.DoPhysics.move(player, 1)
+        physics.DoPhysics.move(player, playerspeed)
         player = setState(1, player)
     if key[pygame.K_w] or key[pygame.K_SPACE] or key[pygame.K_UP]:
         physics.DoPhysics.doJump(player)
@@ -59,7 +60,7 @@ def spawn():
 
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
         # infinite scroll effect
-        speed = vars.speed * 0.5
+        speed = vars.speed
         if viewport.BGSPEED < 1000:
             viewport.BGSPEED = speed * 0.5
         for element in procgen.hooks:
