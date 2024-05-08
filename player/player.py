@@ -10,9 +10,10 @@ pygame.init()
 
 idle = physics.DoPhysics('player/idle', 66, 100, 400, 600, 0.3, 0.9, 0) # the height should almost always be 100
 idle.load('player/idle')
-running = physics.DoPhysics('player/placeholder', 100, 100, 400, 600, 0.3, 0.9, 0)
-running.load('player/placeholder')
+running = physics.DoPhysics('player/running', 82, 100, 400, 600, 0.3, 0.9, 0)
+running.load('player/running')
 swinging = physics.DoPhysics('player/swinging', 128, 100, 400, 600, 0.3, 0.9, 0)
+swinging.load('player/swinging')
 player = idle
 keys = 0
 
@@ -36,14 +37,15 @@ def findHook():
         else:
             return element.cur_x
 
+
 def spawn():
     global player, keys
     key = pygame.key.get_pressed() # controls
     if key[pygame.K_a] or key[pygame.K_LEFT]:
-        physics.DoPhysics.move(player, - vars.speed)
+        physics.DoPhysics.move(player, - 1)
         player = setState(1, player)
     if key[pygame.K_d] or key[pygame.K_RIGHT]:
-        physics.DoPhysics.move(player, vars.speed)
+        physics.DoPhysics.move(player, 1)
         player = setState(1, player)
     if key[pygame.K_w] or key[pygame.K_SPACE] or key[pygame.K_UP]:
         physics.DoPhysics.doJump(player)
@@ -54,8 +56,12 @@ def spawn():
     if key[pygame.K_e]:
         player = setState(2, player)
         player.vel_x, player.vel_y = movements.pull(player.cur_x, player.cur_y, player.vel_x, player.vel_y, findHook())
-    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5:
-        speed = vars.speed * 0.75
+
+    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
+        # infinite scroll effect
+        speed = vars.speed * 0.5
+        if viewport.BGSPEED < 1000:
+            viewport.BGSPEED = speed * 0.5
         for element in procgen.hooks:
             element.cur_x -= speed
         for element in vars.obstacles:
@@ -65,14 +71,24 @@ def spawn():
                 hitbox = vars.obstacleRects[index]
                 hitbox.x = element.cur_x - element.size_x
                 hitbox.y = element.cur_y - element.size_y
+        score.update()
     else:
-        viewport.BGSPEED *= 0.95
+        if viewport.BGSPEED > 0.01:
+            viewport.BGSPEED *= 0.9
+        else:
+            viewport.BGSPEED = 0
+        for element in vars.obstacles:
+            element.vel_x *= 0.9
+        for element in procgen.hooks:
+            element.vel_x *= 0.9
 
     for event in pygame.event.get(): # reset back to idle state when you release a key
         if keys < 0:
             keys = 0
         if event.type == pygame.KEYDOWN:
             keys += 1
+            if event.key == pygame.K_ESCAPE:
+                vars.gameState = -1
         if event.type == pygame.KEYUP:
             if event.key in [pygame.K_a, pygame.K_LEFT, pygame.K_d, pygame.K_RIGHT, pygame.K_w, pygame.K_SPACE, pygame.K_UP, pygame.K_q, pygame.K_e]:
                 if keys != 1:

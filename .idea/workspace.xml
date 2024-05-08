@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ee936a-af90-4554-b777-7c754796612a" name="Changes" comment="i have no idea why this doesnt work">
-      <change beforePath="$PROJECT_DIR$/assets/obstacles/tall.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/obstacles/tall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/player/running.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/physics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/procgen.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/procgen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/viewport.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/viewport.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vars.py" beforeDir="false" afterPath="$PROJECT_DIR$/vars.py" afterDir="false" />
@@ -168,8 +171,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.procgen" />
         <item itemvalue="Python.player" />
+        <item itemvalue="Python.procgen" />
         <item itemvalue="Python.movements" />
         <item itemvalue="Python.viewport" />
       </list>

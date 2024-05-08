@@ -1,10 +1,10 @@
 import pygame
 import vars
-from game import score
+from game import score, procgen
 pygame.init()
 
 screen = vars.screen
-universalGravity = 0.45
+universalGravity = 0.65
 maxBounce = 0.6
 
 class DoPhysics:
@@ -52,6 +52,8 @@ class DoPhysics:
             self.vel_x = 0
         if self.cur_x > 800 - self.size_x and self.vel_x > 0: # right bound
             self.vel_x = 0
+        if self.cur_y + self.size_y > 700:
+            self.cur_y = 700 - self.size_y
 
         if self.rect.collidelist(vars.obstacleRects) >= 0: # object collision detection
             score.dock(self.vel_x)
@@ -62,10 +64,11 @@ class DoPhysics:
                 self.cur_y += 5
             if obrects.cur_y >= self.cur_y + self.size_y:
                 self.vel_y = -abs(self.vel_y) * self.bounce
-            if obrects.cur_x <= self.cur_x - self.size_x:# and not (obrects.cur_y >= self.cur_y + self.size_y): # invert horizontal based on location
+            if obrects.cur_x <= self.cur_x - self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:# invert horizontal based on location
                 self.vel_x = abs(self.vel_x) * self.sticky
-            if obrects.cur_x >= self.cur_x + self.size_x:# and not (obrects.cur_x >= self.cur_y + self.size_y):
-                self.vel_x = -abs(self.vel_x) * self.sticky
+            if obrects.cur_x >= self.cur_x + self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:
+                self.vel_x -= (-abs(self.vel_x) * self.sticky) + vars.speed
+                self.cur_x = obrects.cur_x - obrects.size_x - self.size_x
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacleRects): # friction
             if self.cur_y >= 650:

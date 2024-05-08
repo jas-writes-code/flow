@@ -30,7 +30,7 @@ while vars.running:
         credits.credits()
 
     if vars.gameState == -1:
-        print("Game exited in state " + str(vars.gameState))
+        print("Game exited properly in state " + str(vars.gameState))
         vars.running = False
 
     pygame.display.update()

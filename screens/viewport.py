@@ -28,7 +28,7 @@ def boxLoop():
                 vars.screen.blit(box, (i, j))
                 dynBG.append([box, i, j])
         vars.gameScore += 1  # comment this out if you don't want the boxes to move
-        vars.speed += 10
+#        vars.speed += 10
     if vars.gameScore != 0:
         to_remove = []
         for element in dynBG:

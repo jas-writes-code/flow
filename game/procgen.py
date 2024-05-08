@@ -13,7 +13,7 @@ hookid = 0
 hooks = []
 chaos = vars.config["gameplay"]["chaos"] # determines chance of obstacles spawning -- default: 16
 tall = physics.DoPhysics('obstacles/tall', 157, 300, 0, 0, 0, 0, idlist)
-laser = physics.DoPhysics('obstacles/laser', 400, 40, 0, 0, 0, 0, idlist)
+laser = physics.DoPhysics('obstacles/laser', 600, 60, 0, 0, 0, 0, idlist)
 hook = physics.DoPhysics('obstacles/hook', 72, 100, 0, 0, 0, 0, hookid)
 tall.load('obstacles/tall')
 laser.load('obstacles/laser')
@@ -55,7 +55,7 @@ def spawn(object):
         newLaser.id = idlist
         laserRect = newLaser.setRect()
         newLaser.cur_y = 650
-        newLaser.cur_x = 1700
+        newLaser.cur_x = 1850
         laserRect.x = newLaser.cur_x - newLaser.size_x / 2
         laserRect.y = newLaser.cur_y - newLaser.size_y / 2
         vars.obstacleRects.append(laserRect)
@@ -90,7 +90,7 @@ def tick():
     global hookid
     randomnumber = random.randint(0,100)
 
-    for element in hooks: # update lists and remove old things
+    for element in hooks: # update lists and remove old objects
         if 600 < element.cur_x < 1350 and element not in vars.trackableHooks:
             vars.trackableHooks.append(element)
         if element.cur_x < 600 and element in vars.trackableHooks:
@@ -101,12 +101,12 @@ def tick():
     for element in vars.obstacles:
         index = vars.obstacles.index(element)
         if vars.obstacleRects:
-            if vars.obstacleRects[index].x + element.size_x < -100:
+            if vars.obstacleRects[index].x + element.size_x < -250:
                 vars.obstacleRects.remove(vars.obstacleRects[index])
-        if element.cur_x <= -100:
+        if element.cur_x <= -250:
             vars.obstacles.remove(element)
         element.spawn()
-        pygame.draw.rect(vars.screen, '#ff0000', element, 15, 0) # hitbox on elements, doesn't affect collision
+#        pygame.draw.rect(vars.screen, '#00ff00', element, 10, 0) # hitbox on elements, doesn't affect collision
 
     if hooks == [] or hooks[-1].cur_x < 1000: # if a hook can be spawned, spawn it
         if randomnumber / 3 * 2 < chaos:
