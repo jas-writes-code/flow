@@ -98,6 +98,8 @@ def spawn():
             keys += 1
             if event.key == pygame.K_ESCAPE:
                 vars.gameState = -1
+            if event.key == pygame.K_o:
+                vars.gameState = 2
         if event.type == pygame.KEYUP:
             if event.key in [pygame.K_a, pygame.K_LEFT, pygame.K_d, pygame.K_RIGHT, pygame.K_w, pygame.K_SPACE, pygame.K_UP, pygame.K_q, pygame.K_e]:
                 if keys != 1:

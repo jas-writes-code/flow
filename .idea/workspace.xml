@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ee936a-af90-4554-b777-7c754796612a" name="Changes" comment="i have no idea why this doesnt work">
-      <change afterPath="$PROJECT_DIR$/assets/obstacles/chess2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/gameover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/mainmenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/obstacles/destroyer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/pasthighscores.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/quitgame.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/urscore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/postgame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/procgen.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/procgen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player/movements.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/movements.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/flowman.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/flowman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vars.py" beforeDir="false" afterPath="$PROJECT_DIR$/vars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/viewport.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/viewport.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +66,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="flowman" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="flow" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/game" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game/flowman.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,34 +171,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="viewport" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="flow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/screens" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/screens/viewport.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.flowman" />
         <item itemvalue="Python.player" />
         <item itemvalue="Python.procgen" />
         <item itemvalue="Python.movements" />
-        <item itemvalue="Python.viewport" />
       </list>
     </recent_temporary>
   </component>

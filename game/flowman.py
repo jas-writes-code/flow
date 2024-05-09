@@ -28,7 +28,12 @@ def notYet():
 
 def clearstate():
     vars.gameScore = 0
-    vars.speed = 0
+    vars.speed = 3
+    vars.maxSpeed = 15
+    vars.obstacles = []
+    vars.obstacleRects = []
+    vars.trackableHooks = []
+    procgen.hooks = []
 
 def start():
     viewport.paint()

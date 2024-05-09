@@ -14,6 +14,7 @@ for i in range(0, 10):
 box = pygame.transform.scale(bgBox, (100, 100))
 banner = pygame.transform.scale(banner, (1600, 200))
 BGSPEED = vars.speed * 0.25
+total = 0
 
 # rect(surface, color, rect, width=0, border_radius=0, border_top_left_radius=-1, border_top_right_radius=-1, border_bottom_left_radius=-1, border_bottom_right_radius=-1)
 # boxes are 100x100, top 1 and bottom 2 rows are excluded
@@ -48,7 +49,7 @@ def boxLoop():
                 dynBG.append([box, 1600, j])
 
 def showScore(): # shows the score at the top of the screen
-    scoreDisplay = int(vars.gameScore)
+    scoreDisplay = int(vars.gameScore) - 1
     ones = int(scoreDisplay % 10)
     tens = int((scoreDisplay % 100 - ones) / 10)
     huns = int((scoreDisplay % 1000 - tens) / 100)
@@ -79,3 +80,16 @@ def paint():
     boxLoop()
     padding()
     showScore()
+
+def postgame():
+    global total
+    if total < vars.gameScore:
+        for i in str(total):
+            scoreDisplay = str(total)
+            total_width = sum(scoreNums[int(digit)].get_width() for digit in scoreDisplay)
+            x_pos = 800 - total_width / 2
+            for digit in scoreDisplay:
+                digit_width = scoreNums[int(digit)].get_width()
+                vars.screen.blit(scoreNums[int(digit)], (x_pos, 300))
+                x_pos += digit_width
+        total += int(10**len(str(vars.gameScore - total)) / 10)

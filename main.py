@@ -7,7 +7,7 @@ import time
 import math
 import os
 
-from screens import title, credits, options
+from screens import title, credits, options, postgame
 from environment import beats
 from game import flowman
 import vars
@@ -24,10 +24,13 @@ while vars.running:
         flowman.start()
 
     if vars.gameState == 2:
-        options.options()
+        postgame.postgame()
 
     if vars.gameState == 3:
         credits.credits()
+
+    if vars.gameState == 4:
+        options.options()
 
     if vars.gameState == -1:
         print("Game exited properly in state " + str(vars.gameState))
