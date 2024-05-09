@@ -20,6 +20,8 @@ global speed
 speed = 3
 global maxSpeed
 maxSpeed = 15
+global special
+special = False
 global dynamicColour
 dynamicColour = [255, 255, 255]
 global obstacles

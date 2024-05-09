@@ -67,6 +67,8 @@ def spawn():
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
         # infinite scroll effect
         speed = vars.speed
+        if vars.special:
+            speed = player.vel_x
         if viewport.BGSPEED < 1000:
             viewport.BGSPEED = speed * 0.5
         for element in procgen.hooks:

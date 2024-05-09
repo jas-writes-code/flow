@@ -8,6 +8,7 @@ pygame.init()
 hookid = 0 # incremental id is deprecated now; the id is used to identify obstacle type instead
 hooks = []
 chaos = vars.config["gameplay"]["chaos"] # determines chance of obstacles spawning -- default: 16
+square2 = physics.DoPhysics('obstacles/chess2', 125, 125, 0, 0, 0, 0, 4)
 square1 = physics.DoPhysics('obstacles/chessboard', 150, 150, 0, 0, 0, 0, 3)
 tall = physics.DoPhysics('obstacles/tall', 157, 300, 0, 0, 0, 0, 2)
 laser = physics.DoPhysics('obstacles/laser', 600, 60, 0, 0, 0, 0, 1)
@@ -16,7 +17,8 @@ square1.load('obstacles/chessboard')
 tall.load('obstacles/tall')
 laser.load('obstacles/laser')
 hook.load('obstacles/hook')
-available = (tall, square1)
+square2.load('obstacles/chess2')
+available = (tall, square1, square2)
 
 def obstacles50y():
     count = 0
@@ -82,6 +84,12 @@ def tick():
     global hookid
     randomnumber = random.randint(0,100)
 
+    for element in vars.obstacles:
+        index = vars.obstacles.index(element)
+        if element.cur_x <= -250:
+            vars.obstacles.remove(element)
+            vars.obstacleRects.remove(vars.obstacleRects[index])
+        element.spawn()
     for element in hooks: # update lists and remove old objects
         if 600 < element.cur_x < 1350 and element not in vars.trackableHooks:
             vars.trackableHooks.append(element)
@@ -90,15 +98,6 @@ def tick():
         if element.cur_x < -50:
             hooks.remove(element)
         element.spawn()
-    for element in vars.obstacles:
-        index = vars.obstacles.index(element)
-        if vars.obstacleRects:
-            if vars.obstacleRects[index].x + element.size_x < -250:
-                vars.obstacleRects.remove(vars.obstacleRects[index])
-        if element.cur_x <= -250:
-            vars.obstacles.remove(element)
-        element.spawn()
-        pygame.draw.rect(vars.screen, '#00ff00', element, 10, 0) # hitbox on elements, doesn't affect collision
 
     if hooks == [] or hooks[-1].cur_x < 1000: # if a hook can be spawned, spawn it
         if randomnumber / 3 * 2 < chaos:
@@ -126,3 +125,13 @@ def tick():
                     except IndexError:
                         pass
                     spawn(0)
+
+    # for element in vars.obstacleRects:
+    #     pygame.draw.rect(vars.screen, '#00ff00', element, 10, 0)
+    # if len(vars.obstacleRects) != len(vars.obstacles):
+    #     for element in vars.obstacleRects:
+    #         print(element.x)
+    #     print("-------------")
+    #     for element in vars.obstacles:
+    #         print(int(element.cur_x - element.size_x))
+    #     print("===============")
