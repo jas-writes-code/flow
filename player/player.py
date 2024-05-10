@@ -14,6 +14,8 @@ running = physics.DoPhysics('player/running', 82, 100, 400, 600, 0.3, 0.9, 0)
 running.load('player/running')
 swinging = physics.DoPhysics('player/swinging', 128, 100, 400, 600, 0.3, 0.9, 0)
 swinging.load('player/swinging')
+destroyer = physics.DoPhysics('obstacles/destroyer', 1600, 900, -600, 450, 0, 0, -1)
+destroyer.load('obstacles/destroyer')
 player = idle
 keys = 0
 
@@ -67,11 +69,13 @@ def spawn():
     if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
         # infinite scroll effect
         speed = vars.speed
+        if destroyer.cur_x > -600:
+            destroyer.cur_x -= speed
         if vars.special:
             speed = player.vel_x
         if viewport.BGSPEED < 1000:
             viewport.BGSPEED = speed * 0.5
-        for element in procgen.hooks:
+        for element in vars.hooks:
             element.cur_x -= speed
         for element in vars.obstacles:
             element.cur_x -= speed
@@ -88,8 +92,13 @@ def spawn():
             viewport.BGSPEED = 0
         for element in vars.obstacles:
             element.vel_x *= 0.9
-        for element in procgen.hooks:
+        for element in vars.hooks:
             element.vel_x *= 0.9
+        if vars.gameScore >= 5000:
+            destroyer.cur_x += 2
+
+    if player.cur_x < destroyer.cur_x:
+        vars.gameState = 2
 
     for event in pygame.event.get(): # reset back to idle state when you release a key
         if keys < 0:
@@ -111,5 +120,7 @@ def spawn():
             vars.gameState = -1
 
     player.spawn()
+    destroyer.spawn()
     player.vel_y, player.vel_x = player.getCollisions()
     player.updateVel()
+    destroyer.updateVel()

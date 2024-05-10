@@ -30,3 +30,15 @@ global obstacleRects
 obstacleRects = []
 global trackableHooks
 trackableHooks = []
+global hooks
+hooks = []
+
+
+def clearstate():
+    vars.gameScore = 0
+    vars.speed = 3
+    vars.maxSpeed = 15
+    vars.obstacles = []
+    vars.obstacleRects = []
+    vars.trackableHooks = []
+    vars.hooks = []

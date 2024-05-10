@@ -26,19 +26,10 @@ def notYet():
     player.spawn()
     vars.clock.tick(frames)
 
-def clearstate():
-    vars.gameScore = 0
-    vars.speed = 3
-    vars.maxSpeed = 15
-    vars.obstacles = []
-    vars.obstacleRects = []
-    vars.trackableHooks = []
-    procgen.hooks = []
-
 def start():
     viewport.paint()
-    player.spawn()
     procgen.tick()
+    player.spawn()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             vars.gameState = -1

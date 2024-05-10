@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ee936a-af90-4554-b777-7c754796612a" name="Changes" comment="i have no idea why this doesnt work">
-      <change afterPath="$PROJECT_DIR$/assets/gameover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/mainmenu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/obstacles/destroyer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/pasthighscores.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/quitgame.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/urscore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/postgame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game/flowman.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/flowman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/physics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/viewport.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/viewport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scores.json" beforeDir="false" afterPath="$PROJECT_DIR$/scores.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/postgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/postgame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

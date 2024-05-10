@@ -6,7 +6,6 @@ import vars
 pygame.init()
 
 hookid = 0 # incremental id is deprecated now; the id is used to identify obstacle type instead
-hooks = []
 chaos = vars.config["gameplay"]["chaos"] # determines chance of obstacles spawning -- default: 16
 square2 = physics.DoPhysics('obstacles/chess2', 125, 125, 0, 0, 0, 0, 4)
 square1 = physics.DoPhysics('obstacles/chessboard', 150, 150, 0, 0, 0, 0, 3)
@@ -42,7 +41,7 @@ def avaiblehook():
     return count
 
 def lasernhook():
-    if hooks[-1].cur_x > 1500:
+    if vars.hooks[-1].cur_x > 1500:
         return 1
     else:
         return 0
@@ -90,23 +89,23 @@ def tick():
             vars.obstacles.remove(element)
             vars.obstacleRects.remove(vars.obstacleRects[index])
         element.spawn()
-    for element in hooks: # update lists and remove old objects
+    for element in vars.hooks: # update lists and remove old objects
         if 600 < element.cur_x < 1350 and element not in vars.trackableHooks:
             vars.trackableHooks.append(element)
         if element.cur_x < 600 and element in vars.trackableHooks:
             vars.trackableHooks.remove(element)
         if element.cur_x < -50:
-            hooks.remove(element)
+            vars.hooks.remove(element)
         element.spawn()
 
-    if hooks == [] or hooks[-1].cur_x < 1000: # if a hook can be spawned, spawn it
+    if vars.hooks == [] or vars.hooks[-1].cur_x < 1000: # if a hook can be spawned, spawn it
         if randomnumber / 3 * 2 < chaos:
             hookid += 1
             newHook = copy.copy(hook)
             newHook.id = hookid
             newHook.cur_y = 125
             newHook.cur_x = 1650
-            hooks.append(newHook)
+            vars.hooks.append(newHook)
 
     if vars.obstacles == []: # if no obstacles are in the list, add one
         spawn(3)

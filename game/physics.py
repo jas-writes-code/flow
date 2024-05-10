@@ -31,7 +31,7 @@ class DoPhysics:
         self.size_y = self.image.get_height() / 2
         self.rect.x = self.cur_x - self.size_x
         self.rect.y = self.cur_y - self.size_y
-        pygame.draw.rect(vars.screen, '#000000', self.rect, 1, 0)
+#        pygame.draw.rect(vars.screen, '#000000', self.rect, 1, 0)
         vars.screen.blit(self.image, (self.cur_x - self.size_x, self.cur_y - self.size_y))
 
     def setRect(self):
@@ -64,13 +64,21 @@ class DoPhysics:
             if obrects.cur_y <= self.cur_y - self.size_y: # invert vertical based on location
                 self.vel_y = abs(self.vel_y) * self.bounce
                 self.cur_y += 5
-            if obrects.cur_y >= self.cur_y + self.size_y:
+            if obrects.cur_y >= self.cur_y + self.size_y and obrects.id != 1:
                 self.vel_y = -abs(self.vel_y) * self.bounce
             if obrects.cur_x <= self.cur_x - self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:# invert horizontal based on location
                 self.vel_x = abs(self.vel_x) * self.sticky
             if obrects.cur_x >= self.cur_x + self.size_x and obrects.cur_y - obrects.size_y < self.cur_y < obrects.cur_y + obrects.size_y:
                 self.vel_x += (-abs(self.vel_x) * self.sticky) - vars.speed
                 self.cur_x = obrects.cur_x - obrects.size_x - self.size_x
+
+            if obrects.id == 1:
+                if obrects.cur_x - 120 < self.cur_x < obrects.cur_x + 125 and self.cur_y <= obrects.cur_y - self.size_y:
+                    vars.gameState = 2
+                elif self.cur_x < obrects.cur_x - 120:
+                    self.vel_y = -abs(self.vel_y) * self.bounce
+                elif self.cur_x > obrects.cur_x + 125:
+                    self.vel_y = -abs(self.vel_y) * self.bounce
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacleRects): # friction
             if self.cur_y >= 695 - self.size_y:
