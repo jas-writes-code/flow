@@ -12,7 +12,7 @@ pygame.init()
 # run proc gen every 10 ticks
 
 _frames = vars.config['video']['fps']
-if _frames == "high":
+if _frames == True:
     frames = 60
 else:
     frames = 30

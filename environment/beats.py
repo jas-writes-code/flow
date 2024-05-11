@@ -1,55 +1,49 @@
-import pygame
 import pyaudio
-import random
-import time
+import numpy as np
 import math
-import os
-import json
 
-pygame.mixer.init()
-pygame.mixer.music.load("our music.mp3")
-pygame.mixer.music.play
+# Constants
+CHUNK = 1024
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 44100
 
-clock = pygame.time.Clock()
+def calculate_volume(data):
+    # Convert raw data to numpy array
+    audio_data = np.frombuffer(data, dtype=np.int16)
+    # Calculate RMS (Root Mean Square) of the audio signal
+    rms = np.sqrt(np.mean(np.square(audio_data)))
+    # Convert RMS to dB
+    if rms > 0:
+        volume = 20 * math.log10(rms)
+    else:
+        volume = 0
+    # Normalize volume to a range of 1-255
+    normalized_volume = int((volume + 60) * (255 / 60))
+    # Clip the value to make sure it stays within the valid range
+    return max(0, min(normalized_volume, 255))
 
+def detect():
+    p = pyaudio.PyAudio()
 
-def detect_beat():
-    raw_audio = pygame.mixer.music.get_raw()
-    audio_array = np.frombuffer(raw_audi, dtype.int16)
-    fft_data = np.fft.fft(audio_array)
-    freq_bins = np.fft.fftfreq(len(fft_data))
-    bass_index = np.where((freq_bins >= 20) & (freq_bins <= 200))[0]
-    bass_amplitude = np.sum(np.abs(fft_data[bass_index]))
-    scaled_amplitude = int(bass_amplitude / (len(bass_index) * 10000) * 255)
-    return min(max(scaled_amplitude, 0), 255)
+    # Open stream
+    stream = p.open(format=FORMAT,
+                    channels=CHANNELS,
+                    rate=RATE,
+                    input=True,
+                    frames_per_buffer=CHUNK)
+    try:
+        # Read audio data from stream
+        data = stream.read(CHUNK)
+        # Calculate volume
+        volume = calculate_volume(data)
+        print("Volume:", volume)
+    except KeyboardInterrupt:
+        print("Stopped by user")
 
+    # Stop stream
+    stream.stop_stream()
+    stream.close()
 
-running = true
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            pygame.quit()
-            sys.exit()
-
-screeb.fill(0,0,0)
-
-beat_value = detect_beat()
-
-font = pygame.font.SysFont(None, 36)
-text = font.render("Beat Value: " + str(beat_value), True, (255, 255, 255))
-screen.blit(text, (10, 10))
-
-pygame.display.flip()
-clock.tick(30)
-
-
-
-
-
-    
-
-
-
-
-
+    # Close PyAudio
+    p.terminate()

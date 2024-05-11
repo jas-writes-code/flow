@@ -4,7 +4,7 @@ from game import score, procgen
 pygame.init()
 
 screen = vars.screen
-universalGravity = 0.65
+universalGravity = vars.config['gameplay']['gravity'] / 100
 maxBounce = 0.6
 
 class DoPhysics:
@@ -74,6 +74,7 @@ class DoPhysics:
 
             if obrects.id == 1:
                 if obrects.cur_x - 120 < self.cur_x < obrects.cur_x + 125 and self.cur_y <= obrects.cur_y - self.size_y:
+                    self.vel_x, self.vel_y, self.cur_x, self.cur_y = 0, 0, 400, 600
                     vars.gameState = 2
                 elif self.cur_x < obrects.cur_x - 120:
                     self.vel_y = -abs(self.vel_y) * self.bounce
@@ -93,7 +94,7 @@ class DoPhysics:
             self.vel_y = -17.5
 
     def move(self, dir):
-        if self.vel_x < vars.maxSpeed:
+        if abs(self.vel_x) < vars.maxSpeed:
             self.vel_x += dir
 
     def updateVel(self):

@@ -12,7 +12,7 @@ btnOpt = pygame.image.load('assets/options.png')
 btnQuit = pygame.image.load('assets/quit.png')
 btnCredits = pygame.image.load('assets/credits.png')
 _frames = vars.config['video']['fps']
-if _frames == "high":
+if _frames == True:
     frames = 60
 else:
     frames = 30
@@ -84,7 +84,7 @@ def titleScreen():
                 if 800 - (vars.titleSize - delay) * 2 < loc[0] < 800 + (vars.titleSize - delay) and 750 < loc[1] < 750 + vars.titleSize - delay:
                     vars.gameState = -1  # do this if the quit button is pressed
                 if 600 - (vars.titleSize - delay) * 2 < loc[0] < 600 + (vars.titleSize - delay) * 2 and 650 < loc[1] < 650 + vars.titleSize - delay:
-                    vars.gameState = 2  # do this if the options button is pressed
+                    vars.gameState = 4  # do this if the options button is pressed
                 if 1000 - (vars.titleSize - delay) * 2 < loc[0] < 1000 + (vars.titleSize - delay) * 2 and 650 < loc[1] < 650 + vars.titleSize - delay:
                     vars.gameState = 3  # do this if the credits button is pressed
             if vars.titleSize >= nsize:  # same pattern as above
@@ -93,7 +93,7 @@ def titleScreen():
                 if 800 - (nsize - delay) * 2 < loc[0] < 800 + (nsize - delay) and 750 < loc[1] < 750 + nsize - delay:
                     vars.gameState = -1
                 if 600 - (nsize - delay) * 2 < loc[0] < 600 + (nsize - delay) * 2 and 650 < loc[1] < 650 + nsize - delay:
-                    vars.gameState = 2
+                    vars.gameState = 4
                 if 1000 - (nsize - delay) * 2 < loc[0] < 1000 + (nsize - delay) * 2 and 650 < loc[1] < 650 + nsize - delay:
                     vars.gameState = 3
         if event.type == pygame.QUIT:

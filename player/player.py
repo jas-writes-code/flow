@@ -66,11 +66,11 @@ def spawn():
         except TypeError:
             pass
 
-    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5 and vars.speed < vars.maxSpeed:
+    if ((key[pygame.K_d] or key[pygame.K_RIGHT]) or player.vel_x > 0) and player.cur_x > 800 - player.size_x * 1.5:# and vars.speed < vars.maxSpeed:
         # infinite scroll effect
         speed = vars.speed
         if destroyer.cur_x > -600:
-            destroyer.cur_x -= speed
+            destroyer.cur_x -= speed / 4
         if vars.special:
             speed = player.vel_x
         if viewport.BGSPEED < 1000:
@@ -97,9 +97,6 @@ def spawn():
         if vars.gameScore >= 5000:
             destroyer.cur_x += 2
 
-    if player.cur_x < destroyer.cur_x:
-        vars.gameState = 2
-
     for event in pygame.event.get(): # reset back to idle state when you release a key
         if keys < 0:
             keys = 0
@@ -118,6 +115,12 @@ def spawn():
                     keys = 0
         if event.type == pygame.QUIT:
             vars.gameState = -1
+
+    if player.cur_x < destroyer.cur_x:
+        player.vel_x, player.vel_y, player.cur_x, player.cur_y = 0, 0, 400, 600
+        player = setState(0, player)
+        vars.gameState = 2
+        destroyer.cur_x = -600
 
     player.spawn()
     destroyer.spawn()

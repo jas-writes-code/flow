@@ -49,24 +49,31 @@ def boxLoop():
                 dynBG.append([box, 1600, j])
 
 def showScore(): # shows the score at the top of the screen
-    scoreDisplay = int(vars.gameScore) - 1
-    ones = int(scoreDisplay % 10)
-    tens = int((scoreDisplay % 100 - ones) / 10)
-    huns = int((scoreDisplay % 1000 - tens) / 100)
-    thous = int((scoreDisplay % 10000 - huns) / 1000)
+    if vars.gameScore > 0:
+        scoreDisplay = int(vars.gameScore) - 1
+        ones = int(scoreDisplay % 10)
+        tens = int((scoreDisplay % 100 - ones) / 10)
+        huns = int((scoreDisplay % 1000 - tens) / 100)
+        thous = int((scoreDisplay % 10000 - huns) / 1000)
 
-    vars.screen.blit(scoreTitle, (775 - 415, 11))
+        vars.screen.blit(scoreTitle, (775 - 415, 11))
 
-    if vars.gameScore <= 1000:
-        vars.screen.blit(scoreNums[thous], (825, 11))
-        vars.screen.blit(scoreNums[huns], (825 + scoreNums[thous].get_width(), 11))
-        vars.screen.blit(scoreNums[tens], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width(), 11))
-        vars.screen.blit(scoreNums[ones], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width() + scoreNums[tens].get_width(), 11))
+        if vars.gameScore <= 1000:
+            vars.screen.blit(scoreNums[thous], (825, 11))
+            vars.screen.blit(scoreNums[huns], (825 + scoreNums[thous].get_width(), 11))
+            vars.screen.blit(scoreNums[tens], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width(), 11))
+            vars.screen.blit(scoreNums[ones], (825 + scoreNums[thous].get_width() + scoreNums[huns].get_width() + scoreNums[tens].get_width(), 11))
+        else:
+            dist = 0
+            for digit in str(scoreDisplay):
+                vars.screen.blit(scoreNums[int(digit)], ((825 + dist), 11))
+                dist += scoreNums[int(digit)].get_width()
     else:
-        dist = 0
-        for digit in str(scoreDisplay):
-            vars.screen.blit(scoreNums[int(digit)], ((825 + dist), 11))
-            dist += scoreNums[int(digit)].get_width()
+        vars.screen.blit(scoreTitle, (775 - 415, 11))
+        vars.screen.blit(scoreNums[0], (825, 11))
+        vars.screen.blit(scoreNums[0], (825 + scoreNums[0].get_width(), 11))
+        vars.screen.blit(scoreNums[0], (825 + scoreNums[0].get_width() + scoreNums[0].get_width(), 11))
+        vars.screen.blit(scoreNums[0], (825 + scoreNums[0].get_width() + scoreNums[0].get_width() + scoreNums[0].get_width(), 11))
 
 def padding():
     inverted = []
@@ -82,7 +89,8 @@ def paint():
     showScore()
 
 def postgame():
-    global total
+    global total, dynBG
+    dynBG = []
     if total < vars.gameScore:
         for i in str(total):
             scoreDisplay = str(total)

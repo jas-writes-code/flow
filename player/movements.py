@@ -10,7 +10,7 @@ def swing(player, index):
         diffX = element.cur_x - player.cur_x
         dist = math.sqrt(abs(element.cur_x - player.cur_x)**2 + abs(element.cur_y - player.cur_y))
         velY = math.cos(90 - math.sin(diffX / dist)) * polarVel
-        velX = math.sin(90 - math.sin(diffX / dist)) * polarVel
+        velX = math.sin(90 - math.sin(diffX / dist)) * polarVel + vars.speed * 0.45
         pygame.draw.line(vars.screen, '#6666ff', (player.cur_x + player.size_x - 16, player.cur_y - player.size_y + 9), (element.cur_x, element.cur_y), 5)
         vars.special = True
         return velX, velY

@@ -15,7 +15,7 @@ pygame.init()
 
 pygame.display.set_caption("FlowGame")
 while vars.running:
-    beats.detect()  # still needs writing
+    #beats.detect()  # still needs writing
     
     if vars.gameState == 0:
         title.titleScreen()

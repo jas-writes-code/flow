@@ -2,43 +2,39 @@ import pygame
 import json
 pygame.init()
 
-global gameState
 gameState = 0
-global screen
 screen = pygame.display.set_mode((1600, 900))
-global clock
 clock = pygame.time.Clock()
-global config
 config = json.load(open('settings.json'))
-global running
 running = True
-global titleSize
 titleSize = 0
-global gameScore
 gameScore = 0
-global speed
-speed = 3
-global maxSpeed
+speed = 5
 maxSpeed = 15
-global special
 special = False
-global dynamicColour
-dynamicColour = [255, 255, 255]
-global obstacles
+dynamicColour = [0, 0, 0]
 obstacles = []
-global obstacleRects
 obstacleRects = []
-global trackableHooks
 trackableHooks = []
-global hooks
 hooks = []
+accel = 1
 
 
 def clearstate():
-    vars.gameScore = 0
-    vars.speed = 3
-    vars.maxSpeed = 15
-    vars.obstacles = []
-    vars.obstacleRects = []
-    vars.trackableHooks = []
-    vars.hooks = []
+    global gameState, screen, clock, config, running, titleSize, gameScore, speed, maxSpeed, special, dynamicColour, obstacles, obstacleRects, trackableHooks, hooks, accel
+    gameState = 0
+    screen = pygame.display.set_mode((1600, 900))
+    clock = pygame.time.Clock()
+    config = json.load(open('settings.json'))
+    running = True
+    titleSize = 0
+    gameScore = 0
+    speed = 6.5
+    maxSpeed = 15
+    special = False
+    dynamicColour = [0, 0, 0]
+    obstacles = []
+    obstacleRects = []
+    trackableHooks = []
+    hooks = []
+    accel = 1

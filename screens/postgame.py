@@ -73,11 +73,12 @@ def postgame():
         if event.type == pygame.MOUSEBUTTONUP:
             loc = pygame.mouse.get_pos()
             if 1200 - 338 / 2 < loc[0] < 1200 + 338 / 2 and 400 < loc[1] < 447:
-                    vars.titleSize = 0
-                    vars.clearstate()
-                    vars.gameState = 0 # main menu button
+                count -= 1
+                vars.titleSize = 0
+                vars.clearstate()
+                vars.gameState = 0 # main menu button
             if 1200 - 314 / 2 < loc[0] < 1200 + 314 / 2 and 475 < loc[1] < 475 + 58:
-                    vars.gameState = -1 # quit button
+                vars.gameState = -1 # quit button
         if event.type == pygame.QUIT:
             vars.gameState = -1
     rankings()
