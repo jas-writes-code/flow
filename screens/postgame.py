@@ -50,17 +50,12 @@ def postgame():
     if count < 0:
         scorelist()
         fade_surface = pygame.Surface((1600, 900))
-        fade_surface.fill((0, 0, 0))  # Fill with black color
-        for alpha in range(0, 255, 5):
+        for alpha in range(0, 32):
             fade_surface.set_alpha(alpha)
             vars.screen.blit(fade_surface, (0, 0))
-            pygame.display.flip()
-            pygame.time.delay(30)
-        for i in range(0, 255):
-            gameOver.set_alpha(i)
-            finalScore.set_alpha(i)
-            vars.screen.blit(gameOver, (800 - 948 / 2, 50))
-            vars.screen.blit(finalScore, (800 - 755 / 2, 200))
+            pygame.display.update()
+            vars.clock.tick(30)
+        fade_surface.fill((0, 0, 0))  # Fill with black color
         count += 1
     elif count == 0:
         vars.screen.blit(gameOver, (800 - 948 / 2, 50))

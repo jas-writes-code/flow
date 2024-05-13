@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ee936a-af90-4554-b777-7c754796612a" name="Changes" comment="i have no idea why this doesnt work">
+      <change afterPath="$PROJECT_DIR$/assets/credits/audio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/code.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/created.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/graphics.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/nobody.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/pyaudio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/schwaninger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/supervised.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/text.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/credits/withthanksto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/environment/beats.py" beforeDir="false" afterPath="$PROJECT_DIR$/environment/beats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/flowman.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/flowman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/physics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/score.py" beforeDir="false" afterPath="$PROJECT_DIR$/game/score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player/movements.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/movements.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scores.json" beforeDir="false" afterPath="$PROJECT_DIR$/scores.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/credits.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/credits.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/postgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/postgame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/title.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/title.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/viewport.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/viewport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vars.py" beforeDir="false" afterPath="$PROJECT_DIR$/vars.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,27 +132,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="procgen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="flow" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/game" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game/procgen.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="score" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="flow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,13 +153,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="flow" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.score" />
         <item itemvalue="Python.flowman" />
         <item itemvalue="Python.player" />
-        <item itemvalue="Python.procgen" />
       </list>
     </recent_temporary>
   </component>

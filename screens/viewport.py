@@ -100,4 +100,5 @@ def postgame():
                 digit_width = scoreNums[int(digit)].get_width()
                 vars.screen.blit(scoreNums[int(digit)], (x_pos, 300))
                 x_pos += digit_width
+                pygame.display.update()
         total += int(10**len(str(vars.gameScore - total)) / 10)
