@@ -72,13 +72,13 @@ class DoPhysics:
                 self.vel_x += (-abs(self.vel_x) * self.sticky) - vars.speed
                 self.cur_x = obrects.cur_x - obrects.size_x - self.size_x
 
-            if obrects.id == 1:
-                if obrects.cur_x - 120 < self.cur_x < obrects.cur_x + 125 and self.cur_y <= obrects.cur_y - self.size_y:
+            if obrects.id == 1: # laser death
+                if obrects.cur_x - 170 < self.cur_x < obrects.cur_x + 175 and self.cur_y <= obrects.cur_y - self.size_y:
                     self.vel_x, self.vel_y, self.cur_x, self.cur_y = 0, 0, 400, 600
                     vars.gameState = 2
-                elif self.cur_x < obrects.cur_x - 120:
+                elif self.cur_x < obrects.cur_x - 170:
                     self.vel_y = -abs(self.vel_y) * self.bounce
-                elif self.cur_x > obrects.cur_x + 125:
+                elif self.cur_x > obrects.cur_x + 175:
                     self.vel_y = -abs(self.vel_y) * self.bounce
 
         if self.vel_x != 0 or self.rect.collidelist(vars.obstacleRects): # friction
