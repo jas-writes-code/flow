@@ -22,8 +22,9 @@ total = 0
 # thick line for collisions on bottom rect
 
 def boxLoop():
-    global BGSPEED
+    global BGSPEED, total
     if vars.gameScore == 0:
+        total = 0
         for i in range(0, 1600, 100):
             for j in range(100, 700, 100):
                 vars.screen.blit(box, (i, j))

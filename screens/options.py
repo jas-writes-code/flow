@@ -79,3 +79,5 @@ def options():
             if dragging[0] and dragging[1].x < mouse_x < dragging[1].size[0]:
                 mouse_x, mouse_y = event.pos
                 dragging[1].x = mouse_x + offset_x
+        if event.type == pygame.QUIT:
+            vars.gameState = -1
