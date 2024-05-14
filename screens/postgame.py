@@ -14,6 +14,8 @@ quit = pygame.image.load('assets/quitgame.png')
 quit = pygame.transform.scale(quit, (314, 58))
 menu = pygame.image.load('assets/mainmenu.png')
 menu = pygame.transform.scale(menu, (338, 47))
+again = pygame.image.load('assets/playagain.png')
+again = pygame.transform.scale(again, (330, 50))
 scoresheet = json.load(open('scores.json'))
 scores = []
 content = []
@@ -61,19 +63,25 @@ def postgame():
         vars.screen.blit(gameOver, (800 - 948 / 2, 50))
         vars.screen.blit(finalScore, (800 - 755 / 2, 200))
         viewport.postgame()
-        vars.screen.blit(menu, (1200 - 338 / 2, 400))
-        vars.screen.blit(quit, (1200 - 314 / 2, 475))
+        vars.screen.blit(again, (1200 - 330 / 2, 400))
+        vars.screen.blit(menu, (1200 - 338 / 2, 475))
+        vars.screen.blit(quit, (1200 - 314 / 2, 550))
         vars.screen.blit(highscores, (400 - 500 / 2, 400))
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONUP:
             loc = pygame.mouse.get_pos()
-            if 1200 - 338 / 2 < loc[0] < 1200 + 338 / 2 and 400 < loc[1] < 447:
+            if 1200 - 330 / 2 < loc[0] < 1200 + 330 / 2 and 400 < loc[1] < 400 + 50:
+                count -= 1
+                vars.clearstate()
+                vars.gameState = 1 # play again
+            if 1200 - 338 / 2 < loc[0] < 1200 + 338 / 2 and 475 < loc[1] < 475 + 47:
                 count -= 1
                 vars.titleSize = 0
                 vars.clearstate()
                 vars.gameState = 0 # main menu button
-            if 1200 - 314 / 2 < loc[0] < 1200 + 314 / 2 and 475 < loc[1] < 475 + 58:
+            if 1200 - 314 / 2 < loc[0] < 1200 + 314 / 2 and 550 < loc[1] < 550 + 58:
                 vars.gameState = -1 # quit button
+
         if event.type == pygame.QUIT:
             vars.gameState = -1
     rankings()

@@ -95,7 +95,7 @@ def spawn():
         for element in vars.hooks:
             element.vel_x *= 0.9
         if vars.gameScore >= 5000:
-            destroyer.cur_x += 2
+            destroyer.cur_x += vars.speed * 0.5
 
     for event in pygame.event.get(): # reset back to idle state when you release a key
         if keys < 0:
