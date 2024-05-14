@@ -106,11 +106,9 @@ def spawn():
                 vars.gameState = -1
         if event.type == pygame.KEYUP:
             if event.key in [pygame.K_a, pygame.K_LEFT, pygame.K_d, pygame.K_RIGHT, pygame.K_w, pygame.K_SPACE, pygame.K_UP, pygame.K_q, pygame.K_e]:
-                if keys != 1:
-                    keys -= 1
-                else:
+                keys -= 1
+                if keys == 0:
                     player = setState(0, player)
-                    keys = 0
         if event.type == pygame.QUIT:
             vars.gameState = -1
 

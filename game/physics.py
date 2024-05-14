@@ -94,7 +94,7 @@ class DoPhysics:
             self.vel_y = -17.5
 
     def move(self, dir):
-        if abs(self.vel_x) < vars.maxSpeed:
+        if abs(self.vel_x) < vars.maxSpeed / 1.3:
             self.vel_x += dir
 
     def updateVel(self):
